@@ -5,6 +5,7 @@ import requests
 from lxml import etree
 import time
 
+# 分类路由
 url_dict = {
     # 城市建设
     "城市建设": "http://27.223.1.57:10000/PythonApplication/webbasesite/dataInfoList.aspx?lkocok_pageNo=%s&oneClassGuid=171030103404278262",
@@ -44,31 +45,41 @@ url_dict = {
     "林业水利": "http://27.223.1.57:10000/PythonApplication/webbasesite/dataInfoList.aspx?lkocok_pageNo=%s&oneClassGuid=171030103405315500"
 
 }
+# 遍历路由字典中的key and valve
 for url_k, url_v in url_dict.items():
-
+    # 遍历页数
     for i in range(1, 6):
         url = url_v % i
-
+        # 伪装
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
             "Cookie": "ASP.NET_SessionId=v2rzyofgdek34z04wbq4esk2"
         }
-
+        # 获取网页
         r = requests.get(url=url, headers=headers)
-
+        # 获取网页的text数据
         html = etree.HTML(r.text)
-
+        # 指定数据
         x0 = html.xpath("//tr/td/table/tbody/tr")
-
+        # 设置一个装数据的字典
         dict01 = dict()
+        # 创建文件夹路径
         file_path = os.getcwd() + './青岛问政/'
+        # 如果文件夹不存在
         if not os.path.exists(file_path):
+            # 创建文件夹
             os.makedirs(file_path)
+        # 创建csv文件
         with open(file_path + url_k + ".csv", "a+", encoding="utf-8", newline="") as f:
+            # headers
             fieldnames = ["序号", "诉求", "诉求时间", "回复时间"]
+            # 创建headers
             f_csv = csv.DictWriter(f, fieldnames=fieldnames)
+            # 写入
             f_csv.writeheader()
+            # 遍历获取到的是指定数据
             for item in x0[1:]:
+                # 开始使用xpath获取
                 # 序号  (多出一个)
                 x1 = item.xpath("./td[@width='50']/text()")
                 str_x101 = str(x1).replace("['", "")
@@ -95,12 +106,12 @@ for url_k, url_v in url_dict.items():
                 str_x402 = str_x401.replace("']", "")
 
                 # print(str_x102, str_x202,str_x302,str_x402)
-
+                # 将获取到的数据放入字典
                 dict01['序号'] = str_x102
                 dict01['诉求'] = str_x207
                 dict01['诉求时间'] = str_x302
                 dict01['回复时间'] = str_x402
                 print(dict01)
-
+                # 将字典写入csv文件中
                 f_csv.writerow(dict01)
     # time.sleep(3)
