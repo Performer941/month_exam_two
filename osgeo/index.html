@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>安装指南 &mdash; Scrapy 2.3.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster.custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster.bundle.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/micromodal.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx_rtd_theme.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/hoverxref.js"></script>
+        <script src="../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../_static/js/micromodal.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Scrapy 教程" href="tutorial.html" />
+    <link rel="prev" title="Scrapy一目了然" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Scrapy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">第一步</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Scrapy一目了然</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">安装指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-python-versions">支持的Python版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-scrapy">安装  Scrapy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#things-that-are-good-to-know">很好知道的事情</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-virtual-environment-recommended">使用虚拟环境（推荐）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#platform-specific-installation-notes">平台特定安装说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu-14-04-or-above">Ubuntu 14.04或以上</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pypy">PyPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">故障排除</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#attributeerror-module-object-has-no-attribute-op-no-tlsv1-1">AttributeError::“module”对象没有属性“op u no u tlsv1 u 1”</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Scrapy 教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">基本概念</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/commands.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/spiders.html">蜘蛛</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/selectors.html">选择器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/items.html">项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/loaders.html">项目加载器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/item-pipeline.html">项目管道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/feed-exports.html">Feed 导出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/request-response.html">请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/link-extractors.html">链接提取器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/settings.html">设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/exceptions.html">例外情况</a></li>
+</ul>
+<p class="caption"><span class="caption-text">内置服务</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/logging.html">登录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/stats.html">统计数据集合</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/email.html">发送电子邮件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/telnetconsole.html">远程登录控制台</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/webservice.html">Web服务</a></li>
+</ul>
+<p class="caption"><span class="caption-text">解决具体问题</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/debug.html">调试spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/contracts.html">蜘蛛合约</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/practices.html">常用做法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/broad-crawls.html">宽爬行</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/developer-tools.html">使用浏览器的开发人员工具进行抓取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/dynamic-content.html">选择动态加载的内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/leaks.html">调试内存泄漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/media-pipeline.html">下载和处理文件和图像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/deploy.html">部署蜘蛛</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/autothrottle.html">AutoThrottle 扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/benchmarking.html">标杆管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/jobs.html">作业：暂停和恢复爬行</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/coroutines.html">协同程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption"><span class="caption-text">扩展Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/architecture.html">体系结构概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/downloader-middleware.html">下载器中间件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/spider-middleware.html">蜘蛛中间件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/extensions.html">扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/api.html">核心API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/signals.html">信号</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/exporters.html">条目导出器</a></li>
+</ul>
+<p class="caption"><span class="caption-text">其余所有</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">发行说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">为 Scrapy 贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">版本控制和API稳定性</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>安装指南</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-guide">
+<span id="intro-install"></span><h1>安装指南<a class="headerlink" href="#installation-guide" title="永久链接至标题">¶</a></h1>
+<div class="section" id="supported-python-versions">
+<span id="faq-python-versions"></span><h2>支持的Python版本<a class="headerlink" href="#supported-python-versions" title="永久链接至标题">¶</a></h2>
+<p>Scrapy需要python3.6+，CPython实现（默认）或pypy7.2.0+实现（请参见 <a class="reference external" href="https://docs.python.org/3/reference/introduction.html#implementations" title="(在 Python v3.9)"><span>Alternate Implementations</span></a> ）</p>
+</div>
+<div class="section" id="installing-scrapy">
+<h2>安装  Scrapy<a class="headerlink" href="#installing-scrapy" title="永久链接至标题">¶</a></h2>
+<p>如果你在用 <a class="reference external" href="https://docs.anaconda.com/anaconda/">Anaconda</a> 或 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Miniconda</a> ，您可以从 <a class="reference external" href="https://conda-forge.org/">conda-forge</a> 频道，它有针对Linux、Windows和macOS的最新软件包。</p><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-1466963416408457"
+     data-ad-slot="8850786025"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 安装 Scrapy,运行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">scrapy</span>
+</pre></div>
+</div>
+<p>或者，如果您已经熟悉了python包的安装，那么可以从pypi安装scrappy及其依赖项，方法是：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Scrapy</span>
+</pre></div>
+</div>
+<p>请注意，有时这可能需要根据操作系统解决一些零碎依赖项的编译问题，因此请确保检查 <a class="reference internal" href="#intro-install-platform-notes"><span class="std std-ref">平台特定安装说明</span></a> .</p>
+<p>我们强烈建议您在以下位置安装Scrapy：ref：<cite>一个专用的virtualenv &lt;intro-using-virtualenv&gt;</cite>，以避免与您的系统包冲突。</p>
+<p>有关更详细和平台特定的说明以及故障排除信息，请继续阅读。</p>
+<div class="section" id="things-that-are-good-to-know">
+<h3>很好知道的事情<a class="headerlink" href="#things-that-are-good-to-know" title="永久链接至标题">¶</a></h3>
+<p>Scrapy 是用纯python编写的，它依赖于几个关键的python包（以及其他包）：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lxml.de/index.html">lxml</a> 一个高效的XML和HTML解析器</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/parsel/">parsel</a> ，一个写在lxml上面的html/xml数据提取库,</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/w3lib/">w3lib</a> ，用于处理URL和网页编码的多用途帮助程序</p></li>
+<li><p><a class="reference external" href="https://twistedmatrix.com/trac/">twisted</a> 异步网络框架</p></li>
+<li><p><a class="reference external" href="https://cryptography.io/en/latest/">cryptography</a> 和 <a class="reference external" href="https://pypi.org/project/pyOpenSSL/">pyOpenSSL</a> ，处理各种网络级安全需求</p></li>
+</ul>
+<p>Scrapy测试的最小版本是：</p>
+<ul class="simple">
+<li><p>Twisted 14.0</p></li>
+<li><p>lxml 3.4</p></li>
+<li><p>pyOpenSSL 0.14</p></li>
+</ul>
+<p>Scrapy可以与这些软件包的旧版本一起工作，但不能保证它会继续工作，因为它没有针对它们进行测试。</p>
+<p>其中一些软件包本身依赖于非python软件包，这些软件包可能需要依赖于您的平台的其他安装步骤。请检查 <a class="reference internal" href="#intro-install-platform-notes"><span class="std std-ref">platform-specific guides below</span></a> .</p>
+<p>如果与这些依赖项相关的任何问题，请参阅它们各自的安装说明：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lxml.de/installation.html">lxml installation</a></p></li>
+<li><p><a class="reference external" href="https://cryptography.io/en/latest/installation/">cryptography installation</a></p></li>
+</ul>
+</div>
+<div class="section" id="using-a-virtual-environment-recommended">
+<span id="intro-using-virtualenv"></span><h3>使用虚拟环境（推荐）<a class="headerlink" href="#using-a-virtual-environment-recommended" title="永久链接至标题">¶</a></h3>
+<p>TL;DR: 我们建议在所有平台上的虚拟环境中安装scrapy。</p>
+<p>Python包可以全局安装（也称为系统范围），也可以安装在用户空间中。我们不建议在系统范围内安装Scrapy。</p>
+<p>相反，我们建议您在所谓的“虚拟环境”中安装Scrapy (<a class="reference external" href="https://docs.python.org/3/library/venv.html#module-venv" title="(在 Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code></a> ). 虚拟环境允许您不与已经安装的Python系统包发生冲突（这可能会破坏您的一些系统工具和脚本），并且仍然可以使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> （没有） <code class="docutils literal notranslate"><span class="pre">sudo</span></code> 诸如此类。</p>
+<p>见 <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html#tut-venv" title="(在 Python v3.9)"><span>Virtual Environments and Packages</span></a> 关于如何创建虚拟环境。</p>
+<p>一旦您创建了一个虚拟环境，就可以使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 就像其他的python包一样。（见 <a class="reference internal" href="#intro-install-platform-notes"><span class="std std-ref">platform-specific guides</span></a> 下面是您可能需要预先安装的非python依赖项）。</p>
+</div>
+</div>
+<div class="section" id="platform-specific-installation-notes">
+<span id="intro-install-platform-notes"></span><h2>平台特定安装说明<a class="headerlink" href="#platform-specific-installation-notes" title="永久链接至标题">¶</a></h2>
+<div class="section" id="windows">
+<span id="intro-install-windows"></span><h3>Windows<a class="headerlink" href="#windows" title="永久链接至标题">¶</a></h3>
+<p>虽然可以使用pip在Windows上安装scrapy，但我们建议您安装 <a class="reference external" href="https://docs.anaconda.com/anaconda/">Anaconda</a> 或 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Miniconda</a> 并使用来自 <a class="reference external" href="https://conda-forge.org/">conda-forge</a> 这样可以避免大多数安装问题。</p>
+<p>安装后 <a class="reference external" href="https://docs.anaconda.com/anaconda/">Anaconda</a> 或 <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Miniconda</a> ，安装 Scrapy用 ：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">scrapy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ubuntu-14-04-or-above">
+<span id="intro-install-ubuntu"></span><h3>Ubuntu 14.04或以上<a class="headerlink" href="#ubuntu-14-04-or-above" title="永久链接至标题">¶</a></h3>
+<p>Scrapy目前已经用LXML、Twisted和PyOpenSSL的最新版本进行了测试，并且与最新的Ubuntu发行版兼容。但是它也应该支持Ubuntu的旧版本，比如Ubuntu14.04，尽管存在与TLS连接相关的潜在问题。</p>
+<p><strong>Don't</strong> 使用 <code class="docutils literal notranslate"><span class="pre">python-scrapy</span></code> Ubuntu提供的软件包，它们通常太旧，速度太慢，赶不上最新的垃圾。</p>
+<p>要在Ubuntu（或基于Ubuntu的）系统上安装scray，需要安装以下依赖项：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxslt1</span><span class="o">-</span><span class="n">dev</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">libffi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">zlib1g-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">libxml2-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libxslt1-dev</span></code>
+are required for <code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libssl-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libffi-dev</span></code> are required for <code class="docutils literal notranslate"><span class="pre">cryptography</span></code></p></li>
+</ul>
+<p>在a:ref: ' virtualenv &lt; introduction - use -virtualenv&gt; '内部，您可以在后面安装带有' ' pip ' '的Scrapy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>相同的非python依赖项可用于在debian jessie（8.0）及更高版本中安装scrapy。</p>
+</div>
+</div>
+<div class="section" id="macos">
+<span id="intro-install-macos"></span><h3>macOS<a class="headerlink" href="#macos" title="永久链接至标题">¶</a></h3>
+<p>构建Scrapy的依赖项需要有一个C编译器和开发头文件。在macOS上，这通常是由苹果的Xcode开发工具提供的。要安装Xcode命令行工具，请打开终端窗口并运行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
+</pre></div>
+</div>
+<p>有一个“已知问题&lt;https: github.com=&quot;&quot; pypa=&quot;&quot; pip=&quot;&quot; issues=&quot;&quot; 2468=&quot;&quot;&gt;”_阻止“' pip '”更新系统包。&lt;/https:&gt;要成功安装Scrapy及其依赖项，必须解决这个问题。以下是一些建议的解决方案:</p>
+<ul>
+<li><p><em>（推荐）</em> <strong>Don't</strong> 使用系统python，安装一个新的、更新的版本，它不会与系统的其他部分冲突。以下是如何使用 <a class="reference external" href="https://brew.sh/">homebrew</a> 包管理器：</p>
+<ul>
+<li><p>安装 <a class="reference external" href="https://brew.sh/">homebrew</a> 遵循https://brew.sh中的说明/</p></li>
+<li><p>更新你的 <code class="docutils literal notranslate"><span class="pre">PATH</span></code> 变量，说明应在系统包之前使用自制包（更改 <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> 到 <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code> 如果你在使用 <a class="reference external" href="https://www.zsh.org/">zsh</a> 作为默认外壳）：：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;export PATH=/usr/local/bin:/usr/local/sbin:$PATH&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+</li>
+<li><p>重新加载``.bashrc``以确保发生了变化:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+</li>
+<li><p>安装python:：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">python</span>
+</pre></div>
+</div>
+</li>
+<li><p>最新版本的python <code class="docutils literal notranslate"><span class="pre">pip</span></code> 与它们捆绑在一起，这样您就不需要单独安装。如果不是这样，请升级python:：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">update</span><span class="p">;</span> <span class="n">brew</span> <span class="n">upgrade</span> <span class="n">python</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><em>（可选）</em>  <a class="reference internal" href="#intro-using-virtualenv"><span class="std std-ref">Install Scrapy inside a Python virtual environment</span></a> .</p></li>
+</ul>
+<blockquote>
+<div><p>此方法是解决上述macOS问题的一种解决方法，但它是管理依赖关系的一种总体良好实践，可以补充第一种方法。</p>
+</div></blockquote>
+<p>在任何这些解决方法之后，您都应该能够安装scrapy:：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Scrapy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pypy">
+<h3>PyPy<a class="headerlink" href="#pypy" title="永久链接至标题">¶</a></h3>
+<p>我们建议使用最新的Pypy版本。测试版本为5.9.0。对于pypy3，只测试了Linux安装。</p>
+<p>大多数垃圾依赖现在都有CPython的二进制轮子，但PyPy没有。这意味着这些依赖项将在安装期间生成。在macOS上，您可能会面临构建加密依赖关系的问题，本文介绍了这个问题的解决方案 <a class="reference external" href="https://github.com/pyca/cryptography/issues/2692#issuecomment-272773481">here</a> ，就是 <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">openssl</span></code> 然后导出此命令建议的标志（仅在安装scray时需要）。除了安装构建依赖项之外，在Linux上安装没有特殊问题。在Windows上用PyPy安装Scrapy没有经过测试。</p>
+<p>运行以下命令可以检查scray是否正确安装 <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">bench</span></code> . 如果此命令给出错误，例如 <code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">...</span> <span class="pre">got</span> <span class="pre">2</span> <span class="pre">unexpected</span> <span class="pre">keyword</span> <span class="pre">arguments</span></code> ，这意味着安装工具无法获取一个Pypy特定的依赖项。要解决此问题，请运行 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">'PyPyDispatcher&gt;=2.1.0'</span></code> .</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<span id="intro-install-troubleshooting"></span><h2>故障排除<a class="headerlink" href="#troubleshooting" title="永久链接至标题">¶</a></h2>
+<div class="section" id="attributeerror-module-object-has-no-attribute-op-no-tlsv1-1">
+<h3>AttributeError::“module”对象没有属性“op u no u tlsv1 u 1”<a class="headerlink" href="#attributeerror-module-object-has-no-attribute-op-no-tlsv1-1" title="永久链接至标题">¶</a></h3>
+<p>安装或升级scrappy、twisted或pyopenssl之后，可能会得到以下跟踪的异常：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[…]
+  File &quot;[…]/site-packages/twisted/protocols/tls.py&quot;, line 63, in &lt;module&gt;
+    from twisted.internet._sslverify import _setAcceptableProtocols
+  File &quot;[…]/site-packages/twisted/internet/_sslverify.py&quot;, line 38, in &lt;module&gt;
+    TLSVersion.TLSv1_1: SSL.OP_NO_TLSv1_1,
+AttributeError: &#39;module&#39; object has no attribute &#39;OP_NO_TLSv1_1&#39;
+</pre></div>
+</div>
+<p>您得到这个异常的原因是您的系统或虚拟环境有一个您的Twisted版本不支持的pyopenssl版本。</p>
+<p>要安装您的Twisted版本支持的pyopenssl版本，请使用 <code class="code docutils literal notranslate"><span class="pre">tls</span></code> 额外选项：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">twisted</span><span class="p">[</span><span class="n">tls</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>有关详细信息，请参阅 <a class="reference external" href="https://github.com/scrapy/scrapy/issues/2473">Issue #2473</a> .</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Scrapy 教程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="Scrapy一目了然" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; 版权所有 2008–2020, Scrapy developers
+      <span class="lastupdated">
+        最后更新于 10月 18, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+<script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+analytics.load("8UDQfnf3cyFSTsM4YANnW5sXmgZVILbA");
+analytics.page();
+}}();
+
+analytics.ready(function () {
+    ga('require', 'linker');
+    ga('linker:autoLink', ['scrapinghub.com', 'crawlera.com']);
+});
+</script>
+
+
+</body>
+</html>
