@@ -31,8 +31,13 @@ class Hangban(object):
             html = etree.HTML(content)
             # 执行数据处理函数
             self.gei_hangban(html)
-            # 点击下一页
-            await page.click('#content > div > div:nth-child(4) > div.m-page > div > a.page-link')
+            if await page.xpath("//div[@class='content']/div/div/div[@class='container']/a[@data-reactid='.1.3.4.0.3']"):
+                # 点击下一页
+                click_handle = await page.xpath("//div[@class='content']/div/div/div[@class='container']/a[@data-reactid='.1.3.4.0.3']")
+                await click_handle[0].click()
+            else:
+                print("获取完毕")
+                break
 
     def gei_hangban(self, html):
         x0 = html.xpath('//div[@class="b-airfly"]')
